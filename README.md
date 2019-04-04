@@ -1,0 +1,1 @@
+The purpose of this project is to develop a front-end application using redux and redux-thunk. On the back-end, I used JSON Server to simulate a database with the necessary routing. I also utilized Bulma CSS and set up my first webback configuration.
