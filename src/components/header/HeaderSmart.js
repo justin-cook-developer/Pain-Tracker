@@ -16,7 +16,6 @@ const mapDispatchToProps = dispatch => ({
   handleClick: () => {
     const action = toggleActive()
     dispatch(action)
-    console.log('dispatched')
   }
 })
 

@@ -32,7 +32,7 @@ const Header = ({ isActive, handleClick }) => {
               Records
             </NavLink>
 
-            <NavLink className='navbar-item'>Single Record</NavLink>
+            <a className='navbar-item'>Single Record</a>
           </div>
 
           <div className='navbar-end'>
