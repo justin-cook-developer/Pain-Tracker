@@ -21,9 +21,9 @@ export const postRecord = async record => {
   }
 }
 
-export const updateRecord = async record => {
+export const updateRecord = async (id, record) => {
   try {
-    const requestAddresss = `${rootAddress}${record.id}`
+    const requestAddresss = `${rootAddress}${id}`
     const { data } = axios.put(requestAddresss, record)
     return data
   } catch(e) {
