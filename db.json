@@ -1,18 +1,11 @@
 {
   "records": [
     {
-      "id": 0,
-      "date": "2019-04-03T23:15:30.000Z",
-      "title": "Average day",
-      "painLevel": 6,
-      "notes": "Today was an average day. Some persistent pain, but not much."
-    },
-    {
-      "id": 2,
       "date": "2019-05-03T23:15:30.000Z",
-      "title": "bad day",
-      "painLevel": 7,
-      "notes": "Today was an average day. Some persistent pain, but not much."
+      "title": "amazing day",
+      "painLevel": 2,
+      "notes": "Today was a great day. Some persistent pain, but not much.",
+      "id": 0
     }
   ]
 }
