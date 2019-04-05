@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import Header from './header/Header';
+import HeaderSmart from './header/HeaderSmart';
 import About from './about/About';
 
 const App = () => (
   <Router>
-    <Header />
+    <HeaderSmart />
     <Switch>
       <Route path='/' exact component={About} />
     </Switch>
