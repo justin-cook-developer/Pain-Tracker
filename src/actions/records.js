@@ -22,6 +22,7 @@ export const getRecords = () => async dispatch => {
   }
 }
 
+
 const gotNewRecord = newRecord => ({
   type: NEW_RECORD,
   newRecord,
@@ -37,6 +38,7 @@ export const makeNewRecord = formData => async dispatch => {
   }
 }
 
+
 const gotUpdatedRecord = updatedRecord => ({
   type: UPDATED_RECORD,
   updatedRecord,
@@ -51,6 +53,7 @@ export const updateRecord = (id, formData) => async dispatch => {
     console.log(e)
   }
 }
+
 
 const deletedRecord = id => ({
   type: REMOVED_RECORD,
