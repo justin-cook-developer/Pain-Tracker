@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import HeaderSmart from './header/HeaderSmart';
@@ -14,7 +14,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <Router>
+      <React.Fragment>
         <HeaderSmart />
         <main>
           <Switch>
@@ -22,7 +22,7 @@ class App extends React.Component {
             <Route path='/records' exact component={AllRecordsSmart} />
           </Switch>
         </main>
-      </Router>
+      </React.Fragment>
     );
   }
 }
