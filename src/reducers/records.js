@@ -15,7 +15,7 @@ export default (state = initialState, action) => {
     }
     case UPDATED_RECORD: {
       const { updatedRecord } = action
-      const records = state.records.map(record => {
+      const records = state.map(record => {
         if (record.id === updatedRecord.id) {
           return updatedRecord
         } else {
@@ -25,7 +25,7 @@ export default (state = initialState, action) => {
       return records
     }
     case  REMOVED_RECORD: {
-      const records = state.records.filter(record => record.id !== action.id)
+      const records = state.filter(record => record.id !== action.id)
       return records
     }
     default:

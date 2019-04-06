@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { deleteRecord } from '../../apis/json';
+import { deleteRecord } from '../../actions/records';
 import SingleRecord from './SingleRecordDumb';
 
 const SingleRecordSmart = props => <SingleRecord {...props} />

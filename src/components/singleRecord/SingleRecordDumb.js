@@ -4,24 +4,26 @@ import { Link } from 'react-router-dom'
 const SingleRecord = ({ handleClick, record }) => {
   const { date, title, id } = record
   const parsedDate = new Date(date)
-  console.log(parsedDate)
+
+  const boxStyles = { marginBottom: 5 }
+
     return (
-    <Link to={`/records/${id}`}>
-      <div className='box'>
+      <div className='box' style={boxStyles}>
         <div className='level'>
           <div className='level-left'>
             <p className='level-item'>{`${parsedDate.getMonth()} / ${parsedDate.getDay()} / ${parsedDate.getFullYear()}`}</p>
           </div>
-          <div className='level-right' onClick={e => e.stopPropagation()}>
+          <div className='level-right'>
             <button className='button is-danger' type="delete" onClick={e => {
               e.stopPropagation()
               handleClick()
             }}>Delete</button>
           </div>
         </div>
-        <h1 className='subtitle has-text-centered'>{title}</h1>
+        <Link to={`/records/${id}`} className='is-link'>
+          <h1 className='subtitle has-text-centered'>{title}</h1>
+        </Link>
       </div>
-    </Link>
   )
 }
 
