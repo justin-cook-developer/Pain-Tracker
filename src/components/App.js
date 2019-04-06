@@ -16,10 +16,12 @@ class App extends React.Component {
     return (
       <Router>
         <HeaderSmart />
-        <Switch>
-          <Route path='/' exact component={About} />
-          <Route path='/records' exact component={AllRecords} />
-        </Switch>
+        <main>
+          <Switch>
+            <Route path='/' exact component={About} />
+            <Route path='/records' exact component={AllRecords} />
+          </Switch>
+        </main>
       </Router>
     );
   }
