@@ -1,19 +1,17 @@
 import { RETRIEVED_RECORDS, NEW_RECORD, UPDATED_RECORD, REMOVED_RECORD } from '../actions/records';
 
-const initialState = {
-  records: [],
-}
+const initialState = []
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case RETRIEVED_RECORDS: {
       const { records } = action
-      return { ...state, records }
+      return records
     }
     case NEW_RECORD: {
       const { newRecord } = action
-      const records = [...state.records, newRecord]
-      return { ...state, records }
+      const records = [...state, newRecord]
+      return records
     }
     case UPDATED_RECORD: {
       const { updatedRecord } = action
@@ -24,11 +22,11 @@ export default (state = initialState, action) => {
           return record
         }
       })
-      return { ...state, records }
+      return records
     }
     case  REMOVED_RECORD: {
       const records = state.records.filter(record => record.id !== action.id)
-      return { ...state, records }
+      return records
     }
     default:
       return state

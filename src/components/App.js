@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import HeaderSmart from './header/HeaderSmart';
 import About from './about/About';
-import AllRecords from './allRecords/AllRecordsDumb';
+import AllRecordsSmart from './allRecords/AllRecordsSmart';
 import { getRecords } from '../actions/records';
 
 class App extends React.Component {
@@ -19,7 +19,7 @@ class App extends React.Component {
         <main>
           <Switch>
             <Route path='/' exact component={About} />
-            <Route path='/records' exact component={AllRecords} />
+            <Route path='/records' exact component={AllRecordsSmart} />
           </Switch>
         </main>
       </Router>
