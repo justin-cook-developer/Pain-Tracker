@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   mode: 'development',
@@ -6,11 +7,14 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'public'),
+    publicPath: '/'
   },
   devServer: {
     contentBase: path.join(__dirname, 'public'),
     compress: true,
-    port: 8080
+    port: 8080,
+    hot: true,
+    historyApiFallback: true,
   },
   module: {
     rules: [
@@ -25,4 +29,8 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+  ]
 };
+

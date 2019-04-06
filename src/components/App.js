@@ -1,6 +1,8 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { hot } from 'react-hot-loader/root'
 
 import HeaderSmart from './header/HeaderSmart';
 import About from './about/About';
@@ -14,7 +16,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
+      <Router>
         <HeaderSmart />
         <main>
           <Switch>
@@ -22,7 +24,7 @@ class App extends React.Component {
             <Route path='/records' exact component={AllRecordsSmart} />
           </Switch>
         </main>
-      </React.Fragment>
+      </Router>
     );
   }
 }
@@ -34,4 +36,4 @@ const mapDispatchToProps = dispatch => ({
   }
 })
 
-export default connect(null, mapDispatchToProps)(App)
+export default hot(connect(null, mapDispatchToProps)(App))

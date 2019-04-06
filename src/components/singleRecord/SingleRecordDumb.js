@@ -9,15 +9,17 @@ const SingleRecord = ({ handleClick, record }) => {
 
     return (
       <div className='box' style={boxStyles}>
-        <div className='level'>
+        <div className='level is-mobile'>
           <div className='level-left'>
             <p className='level-item'>{`${parsedDate.getMonth()} / ${parsedDate.getDay()} / ${parsedDate.getFullYear()}`}</p>
           </div>
           <div className='level-right'>
-            <button className='button is-danger' type="delete" onClick={e => {
-              e.stopPropagation()
-              handleClick()
-            }}>Delete</button>
+            <div className='level-item'>
+              <button className='button is-danger' type="delete" onClick={e => {
+                e.stopPropagation()
+                handleClick()
+              }}>Delete</button>
+            </div>
           </div>
         </div>
         <Link to={`/records/${id}`} className='is-link'>
