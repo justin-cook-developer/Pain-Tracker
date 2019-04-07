@@ -24,7 +24,7 @@ export default (state = initialState, action) => {
       })
       return records
     }
-    case  REMOVED_RECORD: {
+    case REMOVED_RECORD: {
       const records = state.filter(record => record.id !== action.id)
       return records
     }

@@ -14,7 +14,7 @@ export const getRecords = async number => {
 
 export const postRecord = async record => {
   try {
-    const { data } = axios.post(rootAddress, record)
+    const { data } = await axios.post(rootAddress, record)
     return data
   } catch(e) {
     console.log(e)
@@ -24,7 +24,7 @@ export const postRecord = async record => {
 export const updateRecord = async (id, record) => {
   try {
     const requestAddresss = `${rootAddress}${id}`
-    const { data } = axios.put(requestAddresss, record)
+    const { data } = await  axios.put(requestAddresss, record)
     return data
   } catch(e) {
     console.log(e)

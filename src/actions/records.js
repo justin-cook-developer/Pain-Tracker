@@ -31,6 +31,7 @@ const gotNewRecord = newRecord => ({
 export const makeNewRecord = formData => async dispatch => {
   try {
     const newRecord = await _postRecord(formData)
+    console.log('-----', newRecord)
     const action = gotNewRecord(newRecord)
     dispatch(action)
   } catch(e) {
