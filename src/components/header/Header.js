@@ -38,7 +38,7 @@ const Header = ({ isActive, handleClick }) => {
           <div className='navbar-end'>
             <div className='navbar-item'>
               <div className='buttons'>
-                <a className='navbar-item button is-primary' href="#" alt="Sign-up button">Sign Up</a>
+                <a className='navbar-item button is-success' href="#" alt="Sign-up button">Sign Up</a>
                 <a className='navbar-item button is-info' href="#" alt="Login button">Login</a>
               </div>
             </div>

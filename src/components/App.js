@@ -21,7 +21,7 @@ class App extends React.Component {
         <main>
           <Switch>
             <Route path='/' exact component={About} />
-            <Route path='/records' exact component={AllRecordsSmart} />
+            <Route path='/records' component={AllRecordsSmart} />
           </Switch>
         </main>
       </Router>
