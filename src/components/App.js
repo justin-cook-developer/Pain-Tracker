@@ -31,7 +31,7 @@ class App extends React.Component {
 
 const mapDispatchToProps = dispatch => ({
   loadRecords: () => {
-    const action = getRecords()
+    const action = getRecords(10)
     dispatch(action)
   }
 })

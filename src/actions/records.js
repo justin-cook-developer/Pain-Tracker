@@ -12,9 +12,9 @@ const gotRecords = records => ({
   records,
 })
 
-export const getRecords = () => async dispatch => {
+export const getRecords = num => async dispatch => {
   try {
-    const records =  await _getRecords(10)
+    const records =  await _getRecords(num)
     const action = gotRecords(records)
     dispatch(action)
   } catch(e) {
