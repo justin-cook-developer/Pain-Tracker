@@ -8,9 +8,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
   reducer,
-  composeEnhancers(
-    applyMiddleware(loggingMiddleware, thunkMiddleware),
-  ),
-)
+  composeEnhancers(applyMiddleware(loggingMiddleware, thunkMiddleware))
+);
 
-export default store
+export default store;

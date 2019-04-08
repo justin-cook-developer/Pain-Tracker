@@ -6,4 +6,4 @@ import records from './records';
 export default combineReducers({
   header,
   records,
-})
+});
