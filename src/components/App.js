@@ -7,6 +7,7 @@ import { hot } from 'react-hot-loader/root'
 import HeaderSmart from './header/HeaderSmart';
 import About from './about/About';
 import AllRecordsSmart from './allRecords/AllRecordsSmart';
+import Record from './record/Record';
 import { getRecords } from '../actions/records';
 
 class App extends React.Component {
@@ -21,6 +22,8 @@ class App extends React.Component {
         <main>
           <Switch>
             <Route path='/' exact component={About} />
+            <Route path='/records/single/:id' exact component={Record} />
+            <Route path='/records/single/:id/edit' exact render={() => <div>Hello</div>} />
             <Route path='/records' component={AllRecordsSmart} />
           </Switch>
         </main>

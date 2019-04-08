@@ -22,7 +22,7 @@ const SingleRecord = ({ handleClick, record }) => {
             </div>
           </div>
         </div>
-        <Link to={`/records/${id}`} className='is-link'>
+        <Link to={`/records/single/${id}`} className='is-link'>
           <h1 className='subtitle has-text-centered'>{title}</h1>
         </Link>
       </div>
