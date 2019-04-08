@@ -42,6 +42,7 @@ class Form extends React.Component {
             <input className='input is-rounded' type='text' name='title' onChange={this.handleGeneralChange} value={title} />
           </div>
         </div>
+
         <div className='field'>
           <label htmlFor='date' className='label'>Date</label>
           <div className='control'>
