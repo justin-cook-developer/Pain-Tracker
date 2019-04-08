@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Route } from 'react-router-dom';
 
-import SingleRecord from '../SingleRecord/SingleRecordSmart';
+import SingleRecord from '../singleRecord/SingleRecordSmart';
 import NewRecordForm from '../newRecordForm/NewRecordFormSmart';
 
 const AllRecordsDumb = ({ records }) => {
