@@ -7,7 +7,10 @@ router.get('/', async (request, response, next) => {
   try {
     const { limit, offset } = request.query
     console.log(limit, offset)
-    const records = await Record.findAll({ limit, offset })
+    const records = await Record.findAll({
+      limit: limit || 10,
+      offset: offset || 0,
+    })
     response.json(records)
   } catch (e) {
     next(e);
@@ -26,5 +29,32 @@ router.post('/', async (request, response, next) => {
     next(e);
   }
 });
+
+router.delete('/:id', async (request, response, next) => {
+  try {
+    const { id } = request.params
+    if (id === undefined) {
+      response.status(400).send('You must specify an id to delete a record.')
+    }
+    await Record.deleteRecord(id)
+    response.status(200).json({})
+  } catch (e) {
+    next(e);
+  }
+});
+
+router.put('/:id', async (request, response, next) => {
+  try {
+    const { id } = request.params
+    if (id === undefined) {
+      response.status(400).send('You must specify an id to update a record.')
+    }
+
+  } catch (e) {
+    next(e);
+  }
+});
+
+
 
 module.exports = router

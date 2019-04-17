@@ -18,7 +18,17 @@ const correctPainLevel = instance => {
   }
 }
 
-class Record extends Model {}
+class Record extends Model {
+  static async deleteRecord(id) {
+    try {
+      const record = await this.findByPk(id)
+      await record.destroy()
+      return id
+    } catch(e) {
+      console.log(e)
+    }
+  }
+}
 Record.init({
   title: {
     type: Sequelize.STRING,
