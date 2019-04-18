@@ -28,7 +28,25 @@ class Record extends Model {
       console.log(e)
     }
   }
+
+  static async updateRecord(id, record) {
+    try {
+      const recordFromDatabase = await this.findByPk(id)
+      const updatedRecord = await recordFromDatabase.update(record)
+      return updatedRecord
+    } catch(e) {
+      console.log(e,)
+    }
+  }
+
+  sendMinimal() {
+    const minimalRecord = { ...this.dataValues }
+    delete minimalRecord.createdAt
+    delete minimalRecord.updatedAt
+    return minimalRecord
+  }
 }
+
 Record.init({
   title: {
     type: Sequelize.STRING,
@@ -62,16 +80,10 @@ Record.init({
   modelName: 'record'
 })
 
-Record.beforeValidate(instance => {
-  correctPainLevel(instance)
-})
+Record.beforeValidate(correctPainLevel)
 
-Record.beforeCreate(instance => {
-  formatInstance(instance)
-})
+Record.beforeCreate(formatInstance)
 
-Record.beforeUpdate(instance => {
-  formatInstance(instance)
-})
+Record.beforeUpdate(formatInstance)
 
 module.exports = Record

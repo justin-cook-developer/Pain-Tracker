@@ -6,8 +6,8 @@ const { Record } = require('../db/index')
 router.get('/', async (request, response, next) => {
   try {
     const { limit, offset } = request.query
-    console.log(limit, offset)
     const records = await Record.findAll({
+      attributes: { exclude: ['createdAt', 'updatedAt'] },
       limit: limit || 10,
       offset: offset || 0,
     })
@@ -24,7 +24,7 @@ router.post('/', async (request, response, next) => {
       where: { date },
       defaults: { title, painLevel, notes },
     })
-    response.json(record)
+    response.json(record.sendMinimal())
   } catch (e) {
     next(e);
   }
@@ -37,7 +37,8 @@ router.delete('/:id', async (request, response, next) => {
       response.status(400).send('You must specify an id to delete a record.')
     }
     await Record.deleteRecord(id)
-    response.status(200).json({})
+    response.status(200)
+    response.json({})
   } catch (e) {
     next(e);
   }
@@ -49,12 +50,11 @@ router.put('/:id', async (request, response, next) => {
     if (id === undefined) {
       response.status(400).send('You must specify an id to update a record.')
     }
-
+    const updatedRecord = await Record.updateRecord(id, request.body)
+    response.json(updatedRecord.sendMinimal())
   } catch (e) {
     next(e);
   }
 });
-
-
 
 module.exports = router
