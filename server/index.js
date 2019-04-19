@@ -15,9 +15,10 @@ app.use(express.static(path.join(__dirname, '../', 'public')))
 
 app.use('/api', require('./api/index.js'))
 
-app.use((request, response, next) => {
-  response.status(404)
-  response.send('Page not found. Incorrect route.')
+app.use((request, responfilese, next) => {
+  const filePath = path.join(__dirname, '../public') + 'index.html'
+  console.log(path.join(__dirname, '../public'))
+  response.sendFile(filePath)
 })
 
 app.use((e, request, response, next) => {

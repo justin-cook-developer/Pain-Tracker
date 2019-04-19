@@ -24,15 +24,14 @@ const mapStateToProps = ({ records }, { match }) => {
   const { date } = record;
   const newDate = makeValidDate(date);
   const updatedRecord = { ...record, date: newDate };
-  return { record: updatedRecord, destination: `/records/single/${id}` };
+  return { record: updatedRecord, destination: `/records/single/${id}`};
 };
 
 const mapDispatchToProps = (dispatch, { history }) => ({
   onSubmit: formState => {
-    const { id } = formState;
-    const action = updateRecord(id, formState);
+    const action = updateRecord(formState);
     dispatch(action);
-    history.push(`/records/single/${id}`);
+    history.push(`/records/single/${formState.id}`);
   },
 });
 
