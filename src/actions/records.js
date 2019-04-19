@@ -3,7 +3,7 @@ import {
   postRecord as _postRecord,
   updateRecord as _updateRecord,
   deleteRecord as _deleteRecord,
-} from '../apis/json';
+} from '../apis/records';
 
 // ACTION TYPES
 export const RETRIEVED_RECORDS = 'RETRIEVED_RECORDS';
@@ -17,9 +17,9 @@ const gotRecords = records => ({
   records,
 });
 
-export const getRecords = num => async dispatch => {
+export const getRecords = limit => async dispatch => {
   try {
-    const records = await _getRecords(num);
+    const records = await _getRecords(limit);
     const action = gotRecords(records);
     dispatch(action);
   } catch (e) {
@@ -34,8 +34,7 @@ const gotNewRecord = newRecord => ({
 
 export const makeNewRecord = formData => async dispatch => {
   try {
-    const newRecord = await _postRecord(formData);
-    console.log('-----', newRecord);
+    const newRecord = await _postRecord(formData)
     const action = gotNewRecord(newRecord);
     dispatch(action);
   } catch (e) {
@@ -48,9 +47,9 @@ const gotUpdatedRecord = updatedRecord => ({
   updatedRecord,
 });
 
-export const updateRecord = (id, formData) => async dispatch => {
+export const updateRecord = formData => async dispatch => {
   try {
-    const updatedRecord = await _updateRecord(id, formData);
+    const updatedRecord = await _updateRecord(formData);
     const action = gotUpdatedRecord(updatedRecord);
     dispatch(action);
   } catch (e) {

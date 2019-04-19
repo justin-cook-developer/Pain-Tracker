@@ -4,10 +4,10 @@
   "description": "An application to track pain level so over time.",
   "private": true,
   "scripts": {
-    "start": "npm run json-server & npm run web-watch",
-    "json-server": "json-server --watch db.json",
-    "build": "webpack",
-    "web-watch": "webpack-dev-server --compress"
+    "start": "npm run dev-client & npm run dev-server",
+    "dev-client": "webpack-dev-server --compress",
+    "dev-server": "nodemon ./server/index.js",
+    "build": "webpack"
   },
   "author": "Justin Cook",
   "license": "MIT",
@@ -15,7 +15,9 @@
     "@babel/polyfill": "^7.4.3",
     "axios": "^0.18.0",
     "bulma": "^0.7.4",
-    "json-server": "^0.14.2",
+    "express": "^4.16.4",
+    "morgan": "^1.9.1",
+    "pg": "^7.9.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-hot-loader": "^4.8.3",
@@ -23,7 +25,8 @@
     "react-router-dom": "^5.0.0",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "sequelize": "^5.6.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",
@@ -32,6 +35,7 @@
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.5",
     "css-loader": "^2.1.1",
+    "nodemon": "^1.18.11",
     "style-loader": "^0.23.1",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",

@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-const rootAddress = 'http://localhost:3000/records/';
+const rootAddress = '/api/records/';
 
-export const getRecords = async number => {
+export const getRecords = async (limit = 10, offset = 0) => {
   try {
-    const requestAddress = `${rootAddress}?_limit=${number}`;
+    const requestAddress = `${rootAddress}?limit=${limit}&offset=${offset}`;
     const { data } = await axios.get(requestAddress);
     return data;
   } catch (e) {
@@ -12,18 +12,18 @@ export const getRecords = async number => {
   }
 };
 
-export const postRecord = async record => {
+export const postRecord = async formData => {
   try {
-    const { data } = await axios.post(rootAddress, record);
+    const { data } = await axios.post(rootAddress, formData);
     return data;
   } catch (e) {
     console.log(e);
   }
 };
 
-export const updateRecord = async (id, record) => {
+export const updateRecord = async record => {
   try {
-    const requestAddresss = `${rootAddress}${id}`;
+    const requestAddresss = `${rootAddress}${record.id}`;
     const { data } = await axios.put(requestAddresss, record);
     return data;
   } catch (e) {
