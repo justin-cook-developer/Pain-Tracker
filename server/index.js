@@ -15,13 +15,17 @@ app.use(express.static(path.join(__dirname, '../', 'public')))
 
 app.use('/api', require('./api/index.js'))
 
-app.use((request, responfilese, next) => {
+app.get('*', (request, response, next) => {
   const filePath = path.join(__dirname, '../public', 'index.html')
   response.sendFile(filePath)
 })
 
 app.use((e, request, response, next) => {
-  console.log(e)
+  if (response.headersSent) {
+    return next(e)
+  }
+  console.log(e.stack)
+  response.status(e.status || 500).send(e.message || 'Internal server error')
   next(e)
 })
 
