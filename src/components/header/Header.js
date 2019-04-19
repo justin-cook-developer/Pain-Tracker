@@ -34,7 +34,11 @@ const Header = ({ isActive, handleClick }) => {
         </div>
 
         <div className={`navbar-menu ${isActive ? 'is-active' : ''}`}>
-          <div className="navbar-start">
+          <div className="navbar-start" onClick={e => {
+            if (e.target.className.includes('navbar-item')) {
+              handleClick()
+            }
+          }}>
             <NavLink to="/" className="navbar-item" activeClassName="is-active">
               Home
             </NavLink>
@@ -47,7 +51,7 @@ const Header = ({ isActive, handleClick }) => {
               Records
             </NavLink>
 
-            <a className="navbar-item">Single Record</a>
+            <a className="navbar-item">Profile</a>
           </div>
 
           <div className="navbar-end">
