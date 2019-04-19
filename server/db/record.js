@@ -35,7 +35,7 @@ class Record extends Model {
       const updatedRecord = await recordFromDatabase.update(record)
       return updatedRecord
     } catch(e) {
-      console.log(e,)
+      console.log(e)
     }
   }
 
