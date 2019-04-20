@@ -11,11 +11,17 @@ const makeValidDate = str => {
 };
 
 const EditRecordForm = ({ onSubmit, record, destination }) => (
-  <Form
-    initialState={record}
-    onSubmit={onSubmit}
-    cancelDestination={destination}
-  />
+  <section className='section'>
+    <div className="columns is-centered">
+      <div className="column is-half">
+        <Form
+          initialState={record}
+          onSubmit={onSubmit}
+          cancelDestination={destination}
+        />
+      </div>
+    </div>
+  </section>
 );
 
 const mapStateToProps = ({ records }, { match }) => {
