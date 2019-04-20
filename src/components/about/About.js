@@ -15,7 +15,7 @@ const About = props => {
         <div className="container has-text-centered">
           <h1 className="title">Tired of chronic pain?</h1>
           <h2 className="subtitle">
-            Start tracking your pain to eliminate its causes!
+            Track your pain to eliminate its causes!
           </h2>
           <p>
             <Link
