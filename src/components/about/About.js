@@ -3,15 +3,21 @@ import { Link } from 'react-router-dom';
 
 const About = props => {
   const buttonStyles = {
-    marginTop: 7,
+    marginTop: '1%',
   };
+  const heroStyles = {
+    marginTop: '-10%',
+  }
 
   return (
-    <section className="hero">
+    <section className="hero is-fullheight" style={heroStyles}>
       <div className="hero-body">
         <div className="container has-text-centered">
-          <h1 className="title">Welcome to less pain!</h1>
+          <h1 className="title">Tired of chronic pain?</h1>
           <h2 className="subtitle">
+            Start tracking your pain to eliminate its causes!
+          </h2>
+          <p>
             <Link
               style={buttonStyles}
               className="button is-success"
@@ -19,7 +25,7 @@ const About = props => {
             >
               Get started!
             </Link>
-          </h2>
+          </p>
         </div>
       </div>
     </section>

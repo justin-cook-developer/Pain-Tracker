@@ -35,7 +35,7 @@ const Header = ({ isActive, handleClick }) => {
 
         <div className={`navbar-menu ${isActive ? 'is-active' : ''}`}>
           <div className="navbar-start" onClick={e => {
-            if (e.target.className.includes('navbar-item')) {
+            if (isActive && e.target.className.includes('navbar-item')) {
               handleClick()
             }
           }}>
