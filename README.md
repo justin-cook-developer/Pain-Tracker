@@ -3,7 +3,8 @@ The purpose of this project is to develop a fullstack application using react an
 For this project to work on your local machine, you will need to have node (https://nodejs.org/en/) and postgres (https://www.postgresql.org/download/) installed. Do this before following the next steps.
 
 To run this project, start postgres then do the following in your terminal:
-  - git clone this project into a directory of your choice
+  - git clone this project into a directory of your choice: 
+    'git clone https://github.com/justin-cook-developer/Pain-Tracker.git'
   - move into the project directory: 'cd redux-pain-log'
   - Install the relevant packages: 'npm install'
   - create a database named painLog: 'createdb painLog'
