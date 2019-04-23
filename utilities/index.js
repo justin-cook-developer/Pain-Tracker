@@ -39,9 +39,11 @@ const sortRecords = (records, method) => {
   return recordsCopy.sort(sortingFunction)
 }
 
+const displayDate = date => `${date.getMonth() + 1} / ${date.getDate()} / ${date.getFullYear()}`
 
 module.exports = {
   titleCase,
   paragraphCase,
-  sortRecords
+  sortRecords,
+  displayDate
 }

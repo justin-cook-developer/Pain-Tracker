@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import { displayDate } from '../../../utilities/index';
+
 const RecordDumb = ({ record, handleClick }) => {
   const { title, painLevel, notes, date, id } = record;
   const parsedDate = new Date(date);
@@ -9,7 +11,7 @@ const RecordDumb = ({ record, handleClick }) => {
       <div className="container">
         <div className="level">
           <div className="level-left">
-            <p className="level-item">{`${parsedDate.getMonth()} / ${parsedDate.getDay()} / ${parsedDate.getFullYear()}`}</p>
+            <p className="level-item">{displayDate(parsedDate)}</p>
           </div>
           <div className="level-right">
             <div className="level-item">
