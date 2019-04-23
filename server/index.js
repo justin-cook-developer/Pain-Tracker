@@ -26,12 +26,11 @@ app.use((e, request, response, next) => {
   }
   console.log(e.stack)
   response.status(e.status || 500).send(e.message || 'Internal server error')
-  next(e)
 })
 
 const PORT = process.env.PORT || 3000
 
-connection.sync({ force: true })
+connection.sync('')
   .then(() => {
     app.listen(PORT, () => {
       console.log('Listening at: ', PORT)
