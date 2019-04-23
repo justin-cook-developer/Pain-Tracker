@@ -4,8 +4,13 @@ import { Link } from 'react-router-dom';
 import { displayDate } from '../../../utilities/index';
 
 const RecordDumb = ({ record, handleClick }) => {
+  if (record === undefined) {
+    return (<div className='section content has-text-centered'>Loading...</div>)
+  }
+
   const { title, painLevel, notes, date, id } = record;
   const parsedDate = new Date(date);
+
   return (
     <section className="section">
       <div className="container">

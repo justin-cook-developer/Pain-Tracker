@@ -9,8 +9,11 @@ const Record = ({ record, removeRecord }) => (
 );
 
 const mapStateToProps = ({ records }, { match }) => {
+
   const id = parseInt(match.params.id);
+  console.log(id)
   const record = records.find(record => record.id === id);
+  console.log(record)
   return { record };
 };
 
