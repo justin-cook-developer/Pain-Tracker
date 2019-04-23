@@ -2,7 +2,7 @@
 export const SORT = 'SORT'
 
 // ACTION CREATORS
-export const sortBy = method => ({
+export const sortingMethod = method => ({
   type: SORT,
   method
 })

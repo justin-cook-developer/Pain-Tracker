@@ -3,6 +3,7 @@ import { Link, Route } from 'react-router-dom';
 
 import SingleRecord from '../singleRecord/SingleRecordSmart';
 import NewRecordForm from '../newRecordForm/NewRecordFormSmart';
+import OptionsForm from './optionsFormSmart';
 
 const AllRecordsDumb = ({ records }) => {
   return (
@@ -17,6 +18,11 @@ const AllRecordsDumb = ({ records }) => {
         <div className="columns is-centered">
           <div className="column is-half">
             <Route path="/records/new" exact component={NewRecordForm} />
+          </div>
+        </div>
+        <div className="columns is-centered">
+          <div className='column is-half'>
+            <OptionsForm />
           </div>
         </div>
         <div className="columns is-centered">

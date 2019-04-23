@@ -1,7 +1,7 @@
 import { SORT } from '../actions/allRecordsUI';
 
 const initialState = {
-  sortBy: 'Pain Level: Lowest',
+  sortBy: 'Date: Most Recent',
   search: '',
   pageNumber: 1
 }
