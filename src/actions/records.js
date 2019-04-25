@@ -17,9 +17,10 @@ const gotRecords = records => ({
   records,
 });
 
-export const getRecords = limit => async dispatch => {
+export const getRecords = pageNumber => async dispatch => {
   try {
-    const records = await _getRecords(limit);
+    const offset = (pageNumber - 1) * 14
+    const records = await _getRecords(undefined, offset);
     const action = gotRecords(records);
     dispatch(action);
   } catch (e) {

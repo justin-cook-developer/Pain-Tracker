@@ -29,7 +29,7 @@ class App extends React.Component {
               exact
               component={EditSingleRecordForm}
             />
-            <Route path="/records" component={AllRecordsSmart} />
+            <Route exact path="/records/:pageNumber" component={AllRecordsSmart} />
           </Switch>
         </main>
       </Router>
@@ -39,7 +39,7 @@ class App extends React.Component {
 
 const mapDispatchToProps = dispatch => ({
   loadRecords: () => {
-    const action = getRecords(10);
+    const action = getRecords(1);
     dispatch(action);
   },
 });
