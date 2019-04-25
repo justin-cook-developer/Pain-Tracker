@@ -12,10 +12,6 @@ import EditSingleRecordForm from './editSingleRecord/EditSingleRecordSmart';
 import { getRecords } from '../actions/records';
 
 class App extends React.Component {
-  componentDidMount() {
-    this.props.loadRecords();
-  }
-
   render() {
     return (
       <Router>
@@ -37,16 +33,7 @@ class App extends React.Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  loadRecords: () => {
-    const action = getRecords(1);
-    dispatch(action);
-  },
-});
 
 export default hot(
-  connect(
-    null,
-    mapDispatchToProps
-  )(App)
+  App
 );

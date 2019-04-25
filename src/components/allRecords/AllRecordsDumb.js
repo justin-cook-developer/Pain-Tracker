@@ -4,6 +4,7 @@ import { Link, Route } from 'react-router-dom';
 import SingleRecord from '../singleRecord/SingleRecordSmart';
 import NewRecordForm from '../newRecordForm/NewRecordFormSmart';
 import OptionsForm from './options/optionsFormSmart';
+import ChangePage from './changePage/ChangePageButtonsSmart';
 
 const CenterColumn = ({ comp }) => (
   <div className="columns is-centered">
@@ -26,6 +27,7 @@ const AllRecordsDumb = ({ records }) => {
         <CenterColumn comp={<Route path="/records/new" exact component={NewRecordForm} />} />
         <CenterColumn comp={<OptionsForm />} />
         <CenterColumn comp={records.map(record => <SingleRecord key={record.id} record={record} />)} />
+        <CenterColumn comp={<ChangePage numberRecords={records.length} />} />
       </section>
     </React.Fragment>
   );
