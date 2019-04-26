@@ -4,9 +4,15 @@ import { connect } from 'react-redux';
 import { makeNewRecord } from '../../actions/records';
 import Form from '../form/Form';
 
-const NewRecordForm = ({ onSubmit }) => (
-  <Form onSubmit={onSubmit} cancelDestination={'/records'} />
+const NewRecordForm = ({ onSubmit, cancelDestination }) => (
+  <Form onSubmit={onSubmit} cancelDestination={cancelDestination} />
 );
+
+const mapStateToProps = ({ allRecordsUI: ui }) => {
+  const { pageNumber } = ui
+  const cancelDestination = `/records/${pageNumber}`
+  return { cancelDestination }
+}
 
 const mapDispatchToProps = (dispatch, { history }) => ({
   onSubmit: formData => {
@@ -17,6 +23,6 @@ const mapDispatchToProps = (dispatch, { history }) => ({
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(NewRecordForm);
