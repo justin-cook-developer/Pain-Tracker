@@ -4,22 +4,29 @@ import { connect } from 'react-redux';
 import AllRecordsDumb from './AllRecordsDumb';
 import { sortRecords } from '../../../utilities/index';
 import { getRecords } from '../../actions/records';
+import { changePageNumber } from '../../actions/allRecordsUI';
 
 class AllRecordsSmart extends React.Component {
   constructor(props) {
     super(props)
   }
 
-  loadRecords = () => this.props.loadRecords(this.props.pageNumber)
+  getPageNumber = () => this.props.match.params.pageNumber
+
+  loadRecords = () => this.props.loadRecords(Number(this.getPageNumber()))
+
+  updatePage = () => this.props.updatePage(Number(this.getPageNumber()))
 
   componentDidMount() {
+    this.updatePage()
     this.loadRecords()
   }
 
   componentDidUpdate(oldProps) {
-    if (oldProps.pageNumber === this.props.pageNumber) {
+    if (oldProps.match.params.pageNumber === this.getPageNumber()) {
       return
     } else {
+      this.updatePage()
       this.loadRecords()
     }
   }
@@ -32,9 +39,9 @@ class AllRecordsSmart extends React.Component {
 }
 
 const mapStateToProps = ({ records, allRecordsUI }) => {
-  const { sortBy, pageNumber } = allRecordsUI
+  const { sortBy } = allRecordsUI
   const sortedRecords = sortRecords(records, sortBy)
-  return { records: sortedRecords, pageNumber }
+  return { records: sortedRecords }
 };
 
 const mapDispatchToProps = dispatch => ({
@@ -42,6 +49,10 @@ const mapDispatchToProps = dispatch => ({
     const action = getRecords(pageNumber);
     dispatch(action);
   },
+  updatePage: pageNumber => {
+    const action = changePageNumber(pageNumber)
+    dispatch(action)
+  }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AllRecordsSmart);

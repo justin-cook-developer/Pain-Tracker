@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { hot } from 'react-hot-loader/root';
@@ -26,6 +26,7 @@ class App extends React.Component {
               component={EditSingleRecordForm}
             />
             <Route path="/records/:pageNumber" component={AllRecordsSmart} />
+            <Route render={() => <Redirect to='/' />} />
           </Switch>
         </main>
       </Router>
