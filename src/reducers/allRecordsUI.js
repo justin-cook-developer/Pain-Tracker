@@ -1,4 +1,5 @@
 import { SORT, PAGE_NUMBER } from '../actions/allRecordsUI';
+import { NEW_RECORD } from '../actions/records';
 
 const initialState = {
   sortBy: 'Date: Most Recent',
@@ -17,6 +18,9 @@ export default (state = initialState, action) => {
         pageNumber = 1
       }
       return { ...state, pageNumber }
+    }
+    case NEW_RECORD: {
+      return { ...state, sortBy: 'Date: Most Recent' }
     }
     default: {
       return state

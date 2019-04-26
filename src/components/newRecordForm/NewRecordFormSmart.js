@@ -15,10 +15,10 @@ const mapStateToProps = ({ allRecordsUI: ui }) => {
 }
 
 const mapDispatchToProps = (dispatch, { history }) => ({
-  onSubmit: formData => {
+  onSubmit: async formData => {
     const action = makeNewRecord(formData);
-    dispatch(action);
-    history.push('/records');
+    await dispatch(action);
+    history.push('/records/1');
   },
 });
 
