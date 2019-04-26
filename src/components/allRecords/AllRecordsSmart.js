@@ -46,10 +46,16 @@ const mapStateToProps = ({ records, allRecordsUI }) => {
 
 const mapDispatchToProps = dispatch => ({
   loadRecords: pageNumber => {
+    if (isNaN(pageNumber)) {
+      return
+    }
     const action = getRecords(pageNumber);
     dispatch(action);
   },
   updatePage: pageNumber => {
+    if (isNaN(pageNumber)) {
+      return
+    }
     const action = changePageNumber(pageNumber)
     dispatch(action)
   }
