@@ -13,11 +13,12 @@ export default (state = initialState, action) => {
       const { records } = action;
       return records;
     }
-    case NEW_RECORD: {
-      const { newRecord } = action;
-      const records = [...state, newRecord];
-      return records;
-    }
+    // Not currently using b/c of route redirect on form submission; causes new all recs fetch
+    // case NEW_RECORD: {
+    //   const { newRecord } = action;
+    //   const records = [...state, newRecord];
+    //   return records;
+    // }
     case UPDATED_RECORD: {
       const { updatedRecord } = action;
       const records = state.map(record => {
