@@ -25,7 +25,7 @@ class App extends React.Component {
               exact
               component={EditSingleRecordForm}
             />
-            <Route path="/records" component={AllRecordsSmart} />
+            <Route path="/records/:pageNumber" component={AllRecordsSmart} />
           </Switch>
         </main>
       </Router>
