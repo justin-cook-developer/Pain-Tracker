@@ -44,7 +44,7 @@ const Header = ({ isActive, handleClick }) => {
             </NavLink>
 
             <NavLink
-              to="/records/1"
+              to="/records"
               className="navbar-item"
               activeClassName="is-active"
             >

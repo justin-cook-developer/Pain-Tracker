@@ -12,7 +12,7 @@ const mapDispatchToProps = (dispatch, { history }) => ({
   onSubmit: formData => {
     const action = makeNewRecord(formData);
     dispatch(action);
-    history.push('/records/1');
+    history.push('/records');
   },
 });
 

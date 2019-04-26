@@ -21,7 +21,7 @@ const About = props => {
             <Link
               style={buttonStyles}
               className="button is-success"
-              to="/records/1"
+              to="/records"
             >
               Get started!
             </Link>
