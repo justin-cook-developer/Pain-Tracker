@@ -4,6 +4,7 @@ import {
   updateRecord as _updateRecord,
   deleteRecord as _deleteRecord,
 } from '../apis/records';
+import { getCount } from './allRecordsUI';
 
 // ACTION TYPES
 export const RETRIEVED_RECORDS = 'RETRIEVED_RECORDS';
@@ -17,11 +18,14 @@ const gotRecords = records => ({
   records,
 });
 
-export const getRecords = limit => async dispatch => {
+export const getRecords = pageNumber => async dispatch => {
   try {
-    const records = await _getRecords(limit);
-    const action = gotRecords(records);
-    dispatch(action);
+    const offset = (pageNumber - 1) * 14
+    const data = await _getRecords(undefined, offset);
+    const recordAction = gotRecords(data.rows);
+    const countAction = getCount(data.count)
+    dispatch(recordAction)
+    dispatch(countAction)
   } catch (e) {
     console.log(e);
   }

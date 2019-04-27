@@ -4,19 +4,25 @@ import { connect } from 'react-redux';
 import { makeNewRecord } from '../../actions/records';
 import Form from '../form/Form';
 
-const NewRecordForm = ({ onSubmit }) => (
-  <Form onSubmit={onSubmit} cancelDestination={'/records'} />
+const NewRecordForm = ({ onSubmit, cancelDestination }) => (
+  <Form onSubmit={onSubmit} cancelDestination={cancelDestination} />
 );
 
+const mapStateToProps = ({ allRecordsUI: ui }) => {
+  const { pageNumber } = ui
+  const cancelDestination = `/records/${pageNumber}`
+  return { cancelDestination }
+}
+
 const mapDispatchToProps = (dispatch, { history }) => ({
-  onSubmit: formData => {
+  onSubmit: async formData => {
     const action = makeNewRecord(formData);
-    dispatch(action);
-    history.push('/records');
+    await dispatch(action);
+    history.push('/records/1');
   },
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(NewRecordForm);

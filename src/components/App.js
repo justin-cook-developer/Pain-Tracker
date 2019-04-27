@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { hot } from 'react-hot-loader/root';
@@ -12,10 +12,6 @@ import EditSingleRecordForm from './editSingleRecord/EditSingleRecordSmart';
 import { getRecords } from '../actions/records';
 
 class App extends React.Component {
-  componentDidMount() {
-    this.props.loadRecords();
-  }
-
   render() {
     return (
       <Router>
@@ -29,7 +25,8 @@ class App extends React.Component {
               exact
               component={EditSingleRecordForm}
             />
-            <Route path="/records" component={AllRecordsSmart} />
+            <Route path="/records/:pageNumber" component={AllRecordsSmart} />
+            <Route render={() => <Redirect to='/' />} />
           </Switch>
         </main>
       </Router>
@@ -37,16 +34,7 @@ class App extends React.Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  loadRecords: () => {
-    const action = getRecords(10);
-    dispatch(action);
-  },
-});
 
 export default hot(
-  connect(
-    null,
-    mapDispatchToProps
-  )(App)
+  App
 );

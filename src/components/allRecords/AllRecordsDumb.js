@@ -3,9 +3,20 @@ import { Link, Route } from 'react-router-dom';
 
 import SingleRecord from '../singleRecord/SingleRecordSmart';
 import NewRecordForm from '../newRecordForm/NewRecordFormSmart';
-import OptionsForm from './optionsFormSmart';
+import OptionsForm from './options/optionsFormSmart';
+import ChangePage from './changePage/ChangePageButtons';
 
-const AllRecordsDumb = ({ records }) => {
+const CenterColumn = ({ comp }) => (
+  <div className="columns is-centered">
+    <div className="column is-half">
+      {comp}
+    </div>
+  </div>
+)
+
+const AllRecordsDumb = ({ records, match, count }) => {
+  let { pageNumber } = match.params
+  pageNumber = Number(pageNumber)
   return (
     <React.Fragment>
       <section className="section">
@@ -15,23 +26,10 @@ const AllRecordsDumb = ({ records }) => {
             New Record
           </Link>
         </div>
-        <div className="columns is-centered">
-          <div className="column is-half">
-            <Route path="/records/new" exact component={NewRecordForm} />
-          </div>
-        </div>
-        <div className="columns is-centered">
-          <div className='column is-half'>
-            <OptionsForm />
-          </div>
-        </div>
-        <div className="columns is-centered">
-          <div className="column is-half">
-            {records.map(record => (
-              <SingleRecord key={record.id} record={record} />
-            ))}
-          </div>
-        </div>
+        <CenterColumn comp={<Route path="/records/new" exact component={NewRecordForm} />} />
+        <CenterColumn comp={<OptionsForm />} />
+        <CenterColumn comp={records.map(record => <SingleRecord key={record.id} record={record} />)} />
+        <CenterColumn comp={<ChangePage count={count} pageNumber={pageNumber} numberRecords={records.length} />} />
       </section>
     </React.Fragment>
   );

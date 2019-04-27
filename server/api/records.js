@@ -6,9 +6,9 @@ const { Record } = require('../db/index')
 router.get('/', async (request, response, next) => {
   try {
     const { limit, offset } = request.query
-    const records = await Record.findAll({
+    const records = await Record.findAndCountAll({
       attributes: { exclude: ['createdAt', 'updatedAt'] },
-      limit: limit || 10,
+      limit: limit || 14,
       offset: offset || 0,
     })
     response.json(records)

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import OptionsForm from './optionsFormDumb';
-import { sortingMethod } from '../../actions/allRecordsUI';
+import { sortingMethod } from '../../../actions/allRecordsUI';
 
 const mapStateToProps = ({ allRecordsUI }) => {
   const { sortBy } = allRecordsUI
