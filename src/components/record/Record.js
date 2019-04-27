@@ -11,7 +11,7 @@ const Record = ({ record, removeRecord, pageNumber }) => (
 const mapStateToProps = ({ records, allRecordsUI: ui }, { match }) => {
   const id = parseInt(match.params.id)
   const { pageNumber } = ui
-  const record = records.find(record => record.id === id);
+  const record = records.all.find(record => record.id === id);
   return { record, pageNumber };
 };
 

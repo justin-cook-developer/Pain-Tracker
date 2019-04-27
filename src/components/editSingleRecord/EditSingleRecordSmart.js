@@ -26,7 +26,7 @@ const EditRecordForm = ({ onSubmit, record, destination }) => (
 
 const mapStateToProps = ({ records }, { match }) => {
   const id = parseInt(match.params.id);
-  const record = records.find(record => record.id === id);
+  const record = records.all.find(record => record.id === id);
   const { date } = record;
   const newDate = makeValidDate(date);
   const updatedRecord = { ...record, date: newDate };
