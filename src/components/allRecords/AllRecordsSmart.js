@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import AllRecordsDumb from './AllRecordsDumb';
-import { sortRecords } from '../../../utilities/index';
+// import { sortRecords } from '../../../utilities/index';
 import { getRecords } from '../../actions/records';
 import { changePageNumber } from '../../actions/allRecordsUI';
 
@@ -45,8 +45,8 @@ class AllRecordsSmart extends React.Component {
 
 const mapStateToProps = ({ records, allRecordsUI }) => {
   const { sortBy, count } = allRecordsUI
-  const sortedRecords = sortRecords(records, sortBy)
-  return { records: sortedRecords, count }
+  // const sortedRecords = sortRecords(records, sortBy)
+  return { records, count }
 };
 
 const mapDispatchToProps = dispatch => ({
