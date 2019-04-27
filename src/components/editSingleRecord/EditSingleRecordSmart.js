@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { updateRecord, getRecord } from '../../actions/records';
 import Form from '../form/Form';
 import LoadSingleRecord from '../loadASingleRecord/LoadSingleRecord';
+import IsLoading from '../isLoading/IsLoading';
 
 const makeValidDate = str => {
   const [year, month, other] = str.split('-');
@@ -12,8 +13,8 @@ const makeValidDate = str => {
 };
 
 const EditRecordForm = ({ onSubmit, record, destination }) => {
-  if (record.date === undefined) {
-    return <div>Loading...</div>
+  if (!record || record.date === undefined) {
+    return <IsLoading />
   } else {
     const { date } = record;
     const newDate = makeValidDate(date);
