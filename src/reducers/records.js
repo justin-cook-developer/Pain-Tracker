@@ -3,6 +3,7 @@ import {
   NEW_RECORD,
   UPDATED_RECORD,
   REMOVED_RECORD,
+  RETRIEVED_RECORD,
 } from '../actions/records';
 
 const initialState = {
@@ -12,6 +13,10 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case RETRIEVED_RECORD: {
+      const { record } = action
+      return { ...state, single: record }
+    }
     case RETRIEVED_RECORDS: {
       const { records } = action;
       return { ...state, all: records };

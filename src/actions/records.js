@@ -3,16 +3,33 @@ import {
   postRecord as _postRecord,
   updateRecord as _updateRecord,
   deleteRecord as _deleteRecord,
+  getRecord as _getRecord
 } from '../apis/records';
 import { getCount } from './allRecordsUI';
 
 // ACTION TYPES
 export const RETRIEVED_RECORDS = 'RETRIEVED_RECORDS';
+export const RETRIEVED_RECORD = 'RETRIEVED_RECORD';
 export const NEW_RECORD = 'NEW_RECORD';
 export const UPDATED_RECORD = 'UPDATED_RECORD';
 export const REMOVED_RECORD = 'REMOVED_RECORD';
 
 // ACTION CREATORS
+const gotRecord = record => ({
+  type: RETRIEVED_RECORD,
+  record,
+});
+
+export const getRecord = id => async dispatch => {
+  try {
+    const record = await _getRecord(id);
+    const action = gotRecord(record)
+    dispatch(action)
+  } catch (e) {
+    console.log(e);
+  }
+};
+
 const gotRecords = records => ({
   type: RETRIEVED_RECORDS,
   records,

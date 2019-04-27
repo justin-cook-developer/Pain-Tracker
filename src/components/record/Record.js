@@ -3,16 +3,16 @@ import { connect } from 'react-redux';
 
 import { deleteRecord } from '../../actions/records';
 import RecordDumb from './RecordDumb';
+import LoadSingleRecord from '../loadASingleRecord/LoadSingleRecord';
 
-const Record = ({ record, removeRecord, pageNumber }) => (
-  <RecordDumb record={record} handleClick={removeRecord(pageNumber)} />
-);
+const Record = ({ record, removeRecord, pageNumber, retrieveRecord }) => (
+  <RecordDumb record={record} handleClick={removeRecord(pageNumber)} retrieveRecord={retrieveRecord} />
+)
 
-const mapStateToProps = ({ records, allRecordsUI: ui }, { match }) => {
-  const id = parseInt(match.params.id)
+const mapStateToProps = ({ records, allRecordsUI: ui }) => {
   const { pageNumber } = ui
-  const record = records.all.find(record => record.id === id);
-  return { record, pageNumber };
+  const record = records.single
+  return { pageNumber };
 };
 
 const mapDispatchToProps = (dispatch, { history, match }) => ({
@@ -24,7 +24,10 @@ const mapDispatchToProps = (dispatch, { history, match }) => ({
   },
 });
 
-export default connect(
+const ConnectedRecord = connect(
   mapStateToProps,
   mapDispatchToProps
 )(Record);
+
+
+export default LoadSingleRecord(ConnectedRecord)
