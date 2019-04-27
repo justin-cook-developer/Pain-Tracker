@@ -27,7 +27,6 @@ const AllRecordsDumb = ({ records, match, count }) => {
           </Link>
         </div>
         <CenterColumn comp={<Route path="/records/new" exact component={NewRecordForm} />} />
-        <CenterColumn comp={<OptionsForm />} />
         <CenterColumn comp={records.map(record => <SingleRecord key={record.id} record={record} />)} />
         <CenterColumn comp={<ChangePage count={count} pageNumber={pageNumber} numberRecords={records.length} />} />
       </section>
