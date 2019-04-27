@@ -26,13 +26,13 @@ class AllRecordsSmart extends React.Component {
     if (oldProps.match.params.pageNumber === this.getPageNumber()) {
       return
     } else {
+      this.updatePage()
+      this.loadRecords()
       window.scroll({
         top: 0,
         left: 0,
         behavior: 'smooth'
       });
-      this.updatePage()
-      this.loadRecords()
     }
   }
 
