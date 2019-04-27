@@ -5,7 +5,7 @@ const initialState = {
   sortBy: 'Date: Most Recent',
   search: '',
   pageNumber: 1,
-  count: null
+  count: 0,
 }
 
 export default (state = initialState, action) => {

@@ -21,7 +21,7 @@ const gotRecords = records => ({
 export const getRecords = pageNumber => async dispatch => {
   try {
     const offset = (pageNumber - 1) * 14
-    const data = await _getRecords(undefined, offset);
+    const data = await _getRecords(14, offset);
     const recordAction = gotRecords(data.rows);
     const countAction = getCount(data.count)
     dispatch(recordAction)
