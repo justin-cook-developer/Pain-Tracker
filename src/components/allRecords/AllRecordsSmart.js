@@ -26,6 +26,11 @@ class AllRecordsSmart extends React.Component {
     if (oldProps.match.params.pageNumber === this.getPageNumber()) {
       return
     } else {
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      });
       this.updatePage()
       this.loadRecords()
     }
@@ -39,9 +44,9 @@ class AllRecordsSmart extends React.Component {
 }
 
 const mapStateToProps = ({ records, allRecordsUI }) => {
-  const { sortBy } = allRecordsUI
+  const { sortBy, count } = allRecordsUI
   const sortedRecords = sortRecords(records, sortBy)
-  return { records: sortedRecords }
+  return { records: sortedRecords, count }
 };
 
 const mapDispatchToProps = dispatch => ({

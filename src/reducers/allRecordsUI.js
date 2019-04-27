@@ -1,10 +1,11 @@
-import { SORT, PAGE_NUMBER } from '../actions/allRecordsUI';
+import { SORT, PAGE_NUMBER, TOTAL_PAGES } from '../actions/allRecordsUI';
 import { NEW_RECORD } from '../actions/records';
 
 const initialState = {
   sortBy: 'Date: Most Recent',
   search: '',
-  pageNumber: 1
+  pageNumber: 1,
+  count: null
 }
 
 export default (state = initialState, action) => {
@@ -18,6 +19,10 @@ export default (state = initialState, action) => {
         pageNumber = 1
       }
       return { ...state, pageNumber }
+    }
+    case TOTAL_PAGES: {
+      const { count } = action
+      return { ...state, count }
     }
     case NEW_RECORD: {
       return { ...state, sortBy: 'Date: Most Recent' }

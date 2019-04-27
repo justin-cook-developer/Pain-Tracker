@@ -30,7 +30,7 @@ app.use((e, request, response, next) => {
 
 const PORT = process.env.PORT || 3000
 
-connection.sync({})
+connection.sync({  })
   .then(() => {
     app.listen(PORT, () => {
       console.log('Listening at: ', PORT)

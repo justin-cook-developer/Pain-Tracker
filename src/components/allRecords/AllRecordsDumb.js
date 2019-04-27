@@ -14,7 +14,7 @@ const CenterColumn = ({ comp }) => (
   </div>
 )
 
-const AllRecordsDumb = ({ records, match }) => {
+const AllRecordsDumb = ({ records, match, count }) => {
   let { pageNumber } = match.params
   pageNumber = Number(pageNumber)
   return (
@@ -29,7 +29,7 @@ const AllRecordsDumb = ({ records, match }) => {
         <CenterColumn comp={<Route path="/records/new" exact component={NewRecordForm} />} />
         <CenterColumn comp={<OptionsForm />} />
         <CenterColumn comp={records.map(record => <SingleRecord key={record.id} record={record} />)} />
-        <CenterColumn comp={<ChangePage pageNumber={pageNumber} numberRecords={records.length} />} />
+        <CenterColumn comp={<ChangePage count={count} pageNumber={pageNumber} numberRecords={records.length} />} />
       </section>
     </React.Fragment>
   );
