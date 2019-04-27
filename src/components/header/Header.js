@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 const Header = ({ isActive, handleClick }) => {
   const headerStyles = {
+    marginTop: '.7%',
     paddingLeft: 5,
     paddingRight: 5,
   };
