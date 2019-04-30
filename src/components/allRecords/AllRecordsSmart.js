@@ -46,7 +46,7 @@ class AllRecordsSmart extends React.Component {
 const mapStateToProps = ({ records, allRecordsUI }) => {
   const { sortBy, count } = allRecordsUI
   // const sortedRecords = sortRecords(records, sortBy)
-  return { records, count }
+  return { records: records.all, count }
 };
 
 const mapDispatchToProps = dispatch => ({

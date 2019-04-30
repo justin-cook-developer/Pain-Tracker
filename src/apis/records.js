@@ -2,6 +2,16 @@ import axios from 'axios';
 
 const rootAddress = '/api/records/';
 
+export const getRecord = async id => {
+  try {
+    const requestAddress = `${rootAddress}/${id}`
+    const { data } = await axios.get(requestAddress)
+    return data
+  } catch(e) {
+    console.log(e)
+  }
+}
+
 export const getRecords = async (limit = 14, offset = 0) => {
   try {
     const requestAddress = `${rootAddress}?limit=${limit}&offset=${offset}`;

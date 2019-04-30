@@ -18,6 +18,16 @@ router.get('/', async (request, response, next) => {
   }
 });
 
+router.get('/:id', async (request, response, next) => {
+  try {
+    const id = request.params.id
+    const record = await Record.findByPk(id)
+    response.json(record)
+  } catch(e) {
+    next(e)
+  }
+})
+
 router.post('/', async (request, response, next) => {
   try {
     const { title, painLevel, notes, date } = request.body;
