@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { updateRecord, getRecord } from '../../actions/records';
+import { getRecord } from '../../actions/records';
 
 const HOC = Component => {
   class LoadSingleRecord extends React.Component {

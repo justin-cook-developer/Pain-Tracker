@@ -4,12 +4,17 @@ import { Link } from 'react-router-dom';
 class Form extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.props.initialState;
+    this.state = {
+      fields: this.props.fields,
+      errors: this.props.errors,
+    }
   }
 
   handleGeneralChange = e => {
     const { name, value } = e.target;
-    this.setState({ [name]: value });
+    this.setState(oldState => {
+      return { ...oldState, fields: { ...oldState.fields, [name]: value }}
+    });
   };
 
   makeValidDate = date => {
@@ -28,12 +33,13 @@ class Form extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const state = { ...this.state };
+    const state = { ...this.state.fields };
     this.props.onSubmit(state);
   };
 
   render() {
-    const { date, title, painLevel, notes } = this.state;
+    const { date, title, painLevel, notes } = this.state.fields;
+    const { dateE, titleE, painLevelE, notesE } = this.state.errors
     const dateValue = this.makeValidDate(date);
 
     return (
@@ -51,6 +57,7 @@ class Form extends React.Component {
               value={title}
             />
           </div>
+          {titleE && <p className='help is-danger'>{titleE}</p>}
         </div>
 
         <div className="field">
@@ -74,8 +81,6 @@ class Form extends React.Component {
           <div className="control">
             <input
               className="input is-rounded"
-              min="0"
-              max="10"
               type="number"
               name="painLevel"
               onChange={this.handleGeneralChange}
@@ -114,12 +119,18 @@ class Form extends React.Component {
 }
 
 Form.defaultProps = {
-  initialState: {
+  fields: {
     date: new Date(),
     title: '',
     painLevel: 0,
     notes: '',
   },
+  errors: {
+    dateE: null,
+    titleE: 'error',
+    painLevelE: null,
+    notesE: null,
+  }
 };
 
 export default Form;
