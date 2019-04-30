@@ -16,7 +16,6 @@ const Record = ({ record, removeRecord, pageNumber, retrieveRecord }) => {
 
 const mapStateToProps = ({ records, allRecordsUI: ui }) => {
   const { pageNumber } = ui
-  const record = records.single
   return { pageNumber };
 };
 
