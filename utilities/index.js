@@ -1,3 +1,4 @@
+// server side
 const titleCase = str => str
   .trim()
   .split(' ')
@@ -10,6 +11,7 @@ const paragraphCase = p => {
   return newParagraph
 }
 
+// client side
 const sortRecords = (records, method) => {
   const recordsCopy = records.map(record => ({...record}))
   let sortingFunction;
@@ -39,11 +41,23 @@ const sortRecords = (records, method) => {
   return recordsCopy.sort(sortingFunction)
 }
 
-const displayDate = date => `${date.getMonth() + 1} / ${date.getDate()} / ${date.getFullYear()}`
+const getYearMonthDay = dateStr => {
+  const [year, month, other] = dateStr.split('-');
+  const day = other.slice(0, 2);
+  return [year, month, day]
+}
+
+const displayDate = date => `${date.getMonth() + 1} / ${date.getDate() + 1} / ${date.getFullYear()}`
+
+const makeValidDate = dateStr => {
+  const [year, month, day] = getYearMonthDay(dateStr)
+  return `${year}-${month}-${parseInt(day)}`
+}
 
 module.exports = {
   titleCase,
   paragraphCase,
   sortRecords,
-  displayDate
+  displayDate,
+  makeValidDate,
 }

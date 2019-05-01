@@ -22,7 +22,7 @@ router.get('/:id', async (request, response, next) => {
   try {
     const id = request.params.id
     const record = await Record.findByPk(id)
-    response.json(record)
+    response.json(record.sendMinimal())
   } catch(e) {
     next(e)
   }

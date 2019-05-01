@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import validators from '../../../utilities/formValidationFuncs'
 
 class Form extends React.Component {
   constructor(props) {
@@ -17,30 +18,47 @@ class Form extends React.Component {
     });
   };
 
-  makeValidDate = date => {
-    const [year, month, other] = date.toJSON().split('-');
-    const day = other.slice(0, 2);
-    return `${year}-${month}-${day}`;
-  };
+  // makeValidDate = date => {
+  //   const [year, month, other] = date.toJSON().split('-');
+  //   const day = other.slice(0, 2);
+  //   return `${year}-${month}-${day}`;
+  // };
 
-  handleDateChange = e => {
-    const [year, month, day] = e.target.value
-      .split('-')
-      .map(el => parseInt(el));
-    const date = new Date(year, month - 1, day);
-    this.setState({ date });
-  };
+  // handleDateChange = e => {
+  //   const [year, month, day] = e.target.value
+  //     .split('-')
+  //     .map(el => parseInt(el));
+  //   const date = new Date(year, month - 1, day);
+  //   this.setState({ date });
+  // };
 
   handleSubmit = e => {
     e.preventDefault();
-    const state = { ...this.state.fields };
-    this.props.onSubmit(state);
+    let wasError = false
+    const errors = {}
+
+    for(let key in this.state.fields) {
+      if (key === 'date' || key === 'id') {
+        continue;
+      }
+      const validator = validators[key]
+      const error = validator(this.state.fields[key])
+      if (error) {
+        wasError = true
+        errors[key + 'E'] = error
+      }
+    }
+
+    if (wasError) {
+      this.setState(state => ({ ...state, errors }))
+    } else {
+      this.props.onSubmit(this.state.fields);
+    }
   };
 
   render() {
     const { date, title, painLevel, notes } = this.state.fields;
     const { dateE, titleE, painLevelE, notesE } = this.state.errors
-    const dateValue = this.makeValidDate(date);
 
     return (
       <form>
@@ -69,10 +87,11 @@ class Form extends React.Component {
               className="input is-rounded"
               type="date"
               name="date"
-              onChange={this.handleDateChange}
-              value={dateValue}
+              onChange={this.handleGeneralChange}
+              value={date}
             />
           </div>
+          {dateE && <p className='help is-danger'>{dateE}</p>}
         </div>
         <div className="field">
           <label htmlFor="painLevel" className="label">
@@ -87,6 +106,7 @@ class Form extends React.Component {
               value={painLevel}
             />
           </div>
+          {painLevelE && <p className='help is-danger'>{painLevelE}</p>}
         </div>
         <div className="field">
           <label className="label" htmlFor="notes">
@@ -100,6 +120,7 @@ class Form extends React.Component {
               onChange={this.handleGeneralChange}
             />
           </div>
+          {notesE && <p className='help is-danger'>{notesE}</p>}
         </div>
         <div className="field is-grouped">
           <div className="control">
@@ -127,7 +148,7 @@ Form.defaultProps = {
   },
   errors: {
     dateE: null,
-    titleE: 'error',
+    titleE: '',
     painLevelE: null,
     notesE: null,
   }

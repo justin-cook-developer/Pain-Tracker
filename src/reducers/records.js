@@ -29,14 +29,7 @@ export default (state = initialState, action) => {
     // }
     case UPDATED_RECORD: {
       const { updatedRecord } = action;
-      const records = state.all.map(record => {
-        if (record.id === updatedRecord.id) {
-          return updatedRecord;
-        } else {
-          return record;
-        }
-      });
-      return { ...state, all: records };
+      return { ...state, single: updatedRecord };
     }
     case REMOVED_RECORD: {
       const records = state.all.filter(record => record.id !== action.id);

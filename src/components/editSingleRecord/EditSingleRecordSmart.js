@@ -5,12 +5,7 @@ import { updateRecord, getRecord } from '../../actions/records';
 import Form from '../form/Form';
 import LoadSingleRecord from '../loadASingleRecord/LoadSingleRecord';
 import IsLoading from '../isLoading/IsLoading';
-
-const makeValidDate = str => {
-  const [year, month, other] = str.split('-');
-  const day = other.slice(0, 2);
-  return new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
-};
+import { makeValidDate } from '../../../utilities/index'
 
 const EditRecordForm = ({ onSubmit, record, destination }) => {
   if (!record || record.date === undefined) {

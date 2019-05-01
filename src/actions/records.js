@@ -6,6 +6,13 @@ import {
   getRecord as _getRecord
 } from '../apis/records';
 import { getCount } from './allRecordsUI';
+import { makeValidDate } from '../../utilities/index'
+
+// helper funcs
+const updatedDateData = formData => {
+  const newDateStr = makeValidDate(formData.date)
+  return { ...formData, date: new Date(newDateStr) }
+}
 
 // ACTION TYPES
 export const RETRIEVED_RECORDS = 'RETRIEVED_RECORDS';
@@ -55,7 +62,7 @@ const gotNewRecord = newRecord => ({
 
 export const makeNewRecord = formData => async dispatch => {
   try {
-    const newRecord = await _postRecord(formData)
+    const newRecord = await _postRecord(updatedDateData(formData))
     const action = gotNewRecord(newRecord);
     dispatch(action);
   } catch (e) {
@@ -70,7 +77,7 @@ const gotUpdatedRecord = updatedRecord => ({
 
 export const updateRecord = formData => async dispatch => {
   try {
-    const updatedRecord = await _updateRecord(formData);
+    const updatedRecord = await _updateRecord(updatedDateData(formData));
     const action = gotUpdatedRecord(updatedRecord);
     dispatch(action);
   } catch (e) {
