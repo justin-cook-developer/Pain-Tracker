@@ -38,7 +38,7 @@ class Form extends React.Component {
     const errors = {}
 
     for(let key in this.state.fields) {
-      if (key === 'date' || key === 'id') {
+      if (key === 'id') {
         continue;
       }
       const validator = validators[key]
@@ -141,7 +141,7 @@ class Form extends React.Component {
 
 Form.defaultProps = {
   fields: {
-    date: new Date(),
+    date: '',
     title: '',
     painLevel: 0,
     notes: '',

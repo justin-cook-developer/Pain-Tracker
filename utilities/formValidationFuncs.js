@@ -8,6 +8,14 @@ const title = title => {
   }
 }
 
+const date = dateStr => {
+  if (dateStr === '') {
+    return 'Date is required.'
+  } else {
+    return null
+  }
+}
+
 const painLevel = level => {
   if (level === '' || level === undefined || level === null) {
     return 'Pain level must be a number from 0-10.'
@@ -32,6 +40,7 @@ const validators = {
   title,
   painLevel,
   notes,
+  date
 }
 
 export default validators
